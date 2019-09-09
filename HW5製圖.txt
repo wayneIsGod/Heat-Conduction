@@ -1,0 +1,19 @@
+%https://octave-online.net/
+clear;clc;close all
+color=['r-o','g-o','b-o','k-o','y-o','m-o','c-o','r-s','g-s','b-s','y-s','m-s','c-s'];
+method_num=13;
+MAX_W=10;
+data=load('分析結果.txt');
+ans=zeros(method_num,MAX_W);
+for i=1:method_num
+		ans(i,:)=data(i,:);
+end
+for i=1:method_num
+	for j=1:MAX_W
+		plot(1.0+0.1*(j-1),ans(i,j),color(3*(i-1)+1:3*(i-1)+3));
+		if i==1||i==8
+			text(1.0+0.1*(j-1),ans(i,j), ['(',num2str(1.0+0.1*(j-1),'%f'),',',num2str(ans(i,j),'%f'),')']);
+		end
+		grid on; hold on;
+	end
+end
